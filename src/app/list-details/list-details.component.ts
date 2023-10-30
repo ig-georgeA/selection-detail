@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IRowSelectionEventArgs } from '@infragistics/igniteui-angular';
 import { Subject, take, takeUntil } from 'rxjs';
-import { OrderDetailDto } from '../models/northwind-apiv-2/order-detail-dto';
-import { CustomerDto } from '../models/northwind-apiv-2/customer-dto';
 import { OrderDto } from '../models/northwind-apiv-2/order-dto';
+import { CustomerDto } from '../models/northwind-apiv-2/customer-dto';
+import { OrderDetailDto } from '../models/northwind-apiv-2/order-detail-dto';
 import { NorthwindAPIv2Service } from '../services/northwind-apiv2.service';
 
 @Component({
@@ -33,7 +33,6 @@ export class ListDetailsComponent implements OnInit, OnDestroy {
     this._customer = value;
     this.northwindAPIv2OrderDto$.next();
   }
-  public northwindAPIv2CustomerDto: CustomerDto[] = [];
   public northwindAPIv2OrderDto: OrderDto[] = [];
   public northwindAPIv2OrderDto$: Subject<void> = new Subject<void>();
 
@@ -49,10 +48,6 @@ export class ListDetailsComponent implements OnInit, OnDestroy {
     this.northwindAPIv2Service.getCustomerDto('ALFKI').pipe(takeUntil(this.destroy$)).subscribe({
       next: (data) => this.customer = data,
       error: (_err: any) => this.customer = undefined
-    });
-    this.northwindAPIv2Service.getCustomerDtoList().pipe(takeUntil(this.destroy$)).subscribe({
-      next: (data) => this.northwindAPIv2CustomerDto = data,
-      error: (_err: any) => this.northwindAPIv2CustomerDto = []
     });
     this.northwindAPIv2Service.getOrderDtoList(this.customer?.customerId as any).pipe(takeUntil(this.destroy$)).subscribe({
       next: (data) => this.northwindAPIv2OrderDto = data,
@@ -79,10 +74,6 @@ export class ListDetailsComponent implements OnInit, OnDestroy {
     this.northwindAPIv2OrderDto$.complete();
     this.northwindAPIv2OrderDetailDto$.complete();
     this.destroy$.complete();
-  }
-
-  public listItemClick(item: CustomerDto) {
-    this.customer = item as CustomerDto;
   }
 
   public gridRowSelectionChanging(event: IRowSelectionEventArgs) {
