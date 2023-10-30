@@ -1,0 +1,51 @@
+<div class="column-layout group">
+  <div class="column-layout group_1">
+    <igx-avatar src="/assets/Contacts-Avatar-Icon.svg" size="large" shape="circle" class="avatar"></igx-avatar>
+    <igx-simple-combo [data]="northwindAPIv2CustomerDto" displayKey="customerId" (selectionChanging)="singleSelectComboSelectionChanging($event)" class="single-select-combo"></igx-simple-combo>
+    <h3 class="h3">
+      {{ varCustomer!?.customerId }}
+    </h3>
+    <h5 class="content">
+    </h5>
+    <div class="row-layout group_2">
+      <p class="ig-typography__subtitle-2 content">
+      </p>
+      <p class="ig-typography__subtitle-2 content">
+      </p>
+      <p class="ig-typography__subtitle-2 content">
+      </p>
+    </div>
+  </div>
+  <div class="column-layout group_3">
+    <igx-grid [data]="northwindAPIv2OrderDto" primaryKey="customerId" displayDensity="cosy" rowSelection="single" [rowEditable]="true" [hideRowSelectors]="true" [allowFiltering]="true" filterMode="excelStyleFilter" (rowSelectionChanging)="gridRowSelectionChanging($event)" class="grid">
+      <igx-grid-toolbar>
+        <igx-grid-toolbar-title>Orders</igx-grid-toolbar-title>
+      </igx-grid-toolbar>
+      <igx-column field="orderId" dataType="number" header="orderId" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="customerId" dataType="string" header="customerId" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="employeeId" dataType="number" header="employeeId" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="shipperId" dataType="number" header="shipperId" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="orderDate" dataType="string" header="orderDate" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="requiredDate" dataType="string" header="requiredDate" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="shipVia" dataType="number" header="shipVia" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="freight" dataType="number" header="freight" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="shipName" dataType="string" header="shipName" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="shipAddress.street" dataType="string" header="shipAddress street" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="shipAddress.city" dataType="string" header="shipAddress city" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="shipAddress.region" dataType="string" header="shipAddress region" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="shipAddress.postalCode" dataType="string" header="shipAddress postalCode" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="shipAddress.country" dataType="string" header="shipAddress country" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="shipAddress.phone" dataType="string" header="shipAddress phone" [sortable]="true" [selectable]="false"></igx-column>
+    </igx-grid>
+    <igx-grid [data]="northwindAPIv2OrderDetailDto" primaryKey="orderId" displayDensity="cosy" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid">
+      <igx-grid-toolbar>
+        <igx-grid-toolbar-title>Order details</igx-grid-toolbar-title>
+      </igx-grid-toolbar>
+      <igx-column field="orderId" dataType="number" header="orderId" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="productId" dataType="number" header="productId" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="unitPrice" dataType="number" header="unitPrice" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="quantity" dataType="number" header="quantity" [sortable]="true" [selectable]="false"></igx-column>
+      <igx-column field="discount" dataType="number" header="discount" [sortable]="true" [selectable]="false"></igx-column>
+    </igx-grid>
+  </div>
+</div>
