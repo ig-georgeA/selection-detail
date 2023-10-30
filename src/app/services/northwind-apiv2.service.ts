@@ -24,15 +24,6 @@ export class NorthwindAPIv2Service {
     return this.http.get<CustomerDto>(`${API_ENDPOINT}/Customers/${id}`, options);
   }
 
-  public getCustomerDtoList(): Observable<CustomerDto[]> {
-    const options = {
-      headers: {
-        Authorization: 'Bearer <auth_value>',
-      },
-    };
-    return this.http.get<CustomerDto[]>(`${API_ENDPOINT}/Customers`, options);
-  }
-
   public getOrderDtoList(id: string = 'ALFKI'): Observable<OrderDto[]> {
     const options = {
       headers: {
@@ -49,5 +40,14 @@ export class NorthwindAPIv2Service {
       },
     };
     return this.http.get<OrderDetailDto[]>(`${API_ENDPOINT}/Orders/${id}/Details`, options);
+  }
+
+  public getCustomerDtoList(): Observable<CustomerDto[]> {
+    const options = {
+      headers: {
+        Authorization: 'Bearer <auth_value>',
+      },
+    };
+    return this.http.get<CustomerDto[]>(`${API_ENDPOINT}/Customers`, options);
   }
 }

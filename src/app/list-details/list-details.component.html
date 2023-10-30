@@ -1,13 +1,5 @@
 <div class="column-layout group">
-  <igx-list class="list">
-    <igx-list-item [isHeader]="false" *ngFor="let item of northwindAPIv2CustomerDto" (click)="listItemClick(item)">
-      <span igxListLineTitle>{{ item.companyName }}</span>
-      <span igxListLineSubTitle>{{ item.customerId }}</span>
-    </igx-list-item>
-  </igx-list>
-</div>
-<div class="column-layout group_1">
-  <div class="column-layout group_2">
+  <div class="column-layout group_1">
     <igx-avatar src="/assets/Contacts-Avatar-Icon.svg" size="large" shape="circle" class="avatar"></igx-avatar>
     <h3 class="h3">
       {{ customer!?.customerId }}
@@ -15,7 +7,7 @@
     <h5 class="content">
       {{ customer!?.companyName }}
     </h5>
-    <div class="row-layout group_3">
+    <div class="row-layout group_2">
       <p class="ig-typography__subtitle-2 content">
         {{ customer!?.address.street }}
       </p>
@@ -27,7 +19,7 @@
       </p>
     </div>
   </div>
-  <div class="column-layout group_4">
+  <div class="column-layout group_3">
     <igx-grid [data]="northwindAPIv2OrderDto" primaryKey="orderId" displayDensity="cosy" rowSelection="single" [hideRowSelectors]="true" [allowFiltering]="true" filterMode="excelStyleFilter" (rowSelectionChanging)="gridRowSelectionChanging($event)" class="grid">
       <igx-grid-toolbar>
         <igx-grid-toolbar-title>Orders</igx-grid-toolbar-title>

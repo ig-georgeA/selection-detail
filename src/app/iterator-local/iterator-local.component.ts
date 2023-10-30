@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IComboSelectionChangingEventArgs, IRowSelectionEventArgs } from '@infragistics/igniteui-angular';
 import { Subject, take, takeUntil } from 'rxjs';
-import { CustomerDto } from '../models/northwind-apiv-2/customer-dto';
 import { OrderDto } from '../models/northwind-apiv-2/order-dto';
+import { CustomerDto } from '../models/northwind-apiv-2/customer-dto';
 import { NorthwindAPIv2Service } from '../services/northwind-apiv2.service';
 
 @Component({
